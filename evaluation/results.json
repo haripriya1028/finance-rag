@@ -1,0 +1,240 @@
+[
+  {
+    "id": "q1",
+    "company": "microsoft",
+    "difficulty": "easy",
+    "question": "What was Microsoft's total revenue for fiscal year 2026?",
+    "generated_answer": "Based on the provided context, Microsoft's total revenue for fiscal year 2026 was **$331,839 million** (or approximately **$331.839 billion**).",
+    "expected_answer": "$331,839 million (approximately $331.8 billion)",
+    "retrieved_companies": [
+      "microsoft"
+    ],
+    "keyword_score": 1.0,
+    "passed": true
+  },
+  {
+    "id": "q2",
+    "company": "microsoft",
+    "difficulty": "easy",
+    "question": "What was Microsoft Cloud revenue growth percentage in fiscal year 2026?",
+    "generated_answer": "Based on the provided context, Microsoft Cloud revenue increased **27%** in fiscal year 2026.",
+    "expected_answer": "27% increase to $214.4 billion",
+    "retrieved_companies": [
+      "microsoft"
+    ],
+    "keyword_score": 0.5,
+    "passed": true
+  },
+  {
+    "id": "q3",
+    "company": "microsoft",
+    "difficulty": "medium",
+    "question": "How much did Microsoft's research and development expenses increase in fiscal year 2026?",
+    "generated_answer": "Based on the provided context, Microsoft's research and development expenses increased by $3.1 billion or 9% in fiscal year 2026 compared with fiscal year 2025.",
+    "expected_answer": "$3.1 billion or 9%",
+    "retrieved_companies": [
+      "microsoft"
+    ],
+    "keyword_score": 1.0,
+    "passed": true
+  },
+  {
+    "id": "q4",
+    "company": "nvidia",
+    "difficulty": "easy",
+    "question": "What was NVIDIA's total revenue for fiscal year 2026?",
+    "generated_answer": "Based on the provided context, NVIDIA's total revenue for fiscal year 2026 (ended January 25, 2026) was **$215,938 million** (or approximately **$215.94 billion**).",
+    "expected_answer": "$215,938 million (approximately $215.9 billion)",
+    "retrieved_companies": [
+      "nvidia"
+    ],
+    "keyword_score": 1.0,
+    "passed": true
+  },
+  {
+    "id": "q5",
+    "company": "nvidia",
+    "difficulty": "medium",
+    "question": "What percentage of NVIDIA's revenue came from its largest direct customer in fiscal year 2026?",
+    "generated_answer": "I don't have enough information to answer this.",
+    "expected_answer": "22%",
+    "retrieved_companies": [
+      "nvidia"
+    ],
+    "keyword_score": 0.0,
+    "passed": false
+  },
+  {
+    "id": "q6",
+    "company": "nvidia",
+    "difficulty": "medium",
+    "question": "Who signed NVIDIA's 10-K as President and CEO?",
+    "generated_answer": "Based on the provided context, Jen-Hsun Huang signed the report as President and Chief Executive Officer.",
+    "expected_answer": "Jen-Hsun Huang",
+    "retrieved_companies": [
+      "nvidia"
+    ],
+    "keyword_score": 1.0,
+    "passed": true
+  },
+  {
+    "id": "q7",
+    "company": "jpmc",
+    "difficulty": "easy",
+    "question": "What was JPMorgan Chase's total net revenue for 2025?",
+    "generated_answer": "Based on the provided context, JPMorgan Chase's total net revenue for 2025 was **$182.4 billion**.",
+    "expected_answer": "$182,447 million (approximately $182.4 billion), up 3%",
+    "retrieved_companies": [
+      "jpmc"
+    ],
+    "keyword_score": 0.3333333333333333,
+    "passed": false
+  },
+  {
+    "id": "q8",
+    "company": "jpmc",
+    "difficulty": "easy",
+    "question": "What was JPMorgan Chase's net income for 2025?",
+    "generated_answer": "Based on the provided context, JPMorgan Chase's firmwide net income for 2025 was **$57.0 billion**. \n\n*(Note: Within specific segment reporting, such as page 70 of the Form 10-K, net income of $27.8 billion is also noted).*",
+    "expected_answer": "$57,048 million (approximately $57.0 billion), down 2%",
+    "retrieved_companies": [
+      "jpmc"
+    ],
+    "keyword_score": 0.3333333333333333,
+    "passed": false
+  },
+  {
+    "id": "q9",
+    "company": "all",
+    "difficulty": "hard",
+    "question": "Which of the three companies (Microsoft, NVIDIA, JPMorgan Chase) had the highest total revenue in their most recent fiscal year?",
+    "generated_answer": "Based on the provided context, **Microsoft** had the highest total revenue in its most recent fiscal year:\n\n* **Microsoft (FY 2026):** Just two of its three reportable segments combined generated **$277,787 million** ($277.787 billion)\u2014Productivity and Business Processes ($139,996 million) and Intelligent Cloud ($137,791 million)\u2014excluding its third segment (More Personal Computing). \n* **NVIDIA (FY 2026 / Year Ended Jan 25, 2026):** Total revenue was **$215,938 million** ($215.938 billion).\n* **JPMorgan Chase (FY 2025):** The reported segment revenues in the context are $78.5 billion and $76.0 billion.",
+    "expected_answer": "Microsoft, with $331,839 million, compared to NVIDIA's $215,938 million and JPMorgan's $182,447 million total net revenue",
+    "retrieved_companies": [
+      "nvidia",
+      "jpmc",
+      "microsoft"
+    ],
+    "keyword_score": 0.5,
+    "passed": true
+  },
+  {
+    "id": "q10",
+    "company": "microsoft",
+    "difficulty": "hard",
+    "question": "What was Microsoft's net income for fiscal year 2026, and how does it compare to fiscal year 2025?",
+    "generated_answer": "I don't have enough information to answer this.",
+    "expected_answer": "$133,749 million in FY2026, up 31% from $101,832 million in FY2025",
+    "retrieved_companies": [
+      "microsoft"
+    ],
+    "keyword_score": 0.0,
+    "passed": false
+  },
+  {
+    "id": "q11",
+    "company": "microsoft",
+    "difficulty": "medium",
+    "question": "How did investments in OpenAI impact Microsoft's net income in fiscal year 2026?",
+    "generated_answer": "Based on the provided context, investments in OpenAI positively impacted Microsoft's net income in fiscal year 2026, resulting in an increase in net income of $5.0 billion (or $4,963 million net of tax).",
+    "expected_answer": "Net gains from OpenAI investments increased net income by $5.0 billion and diluted EPS by $0.67",
+    "retrieved_companies": [
+      "microsoft"
+    ],
+    "keyword_score": 0.6666666666666666,
+    "passed": true
+  },
+  {
+    "id": "q12",
+    "company": "microsoft",
+    "difficulty": "easy",
+    "question": "What was Microsoft's diluted earnings per share for fiscal year 2026?",
+    "generated_answer": "Based on the provided context, Microsoft's diluted earnings per share for fiscal year 2026 was **$17.95** (or **$17.28** on an adjusted non-GAAP basis).",
+    "expected_answer": "$17.95",
+    "retrieved_companies": [
+      "microsoft"
+    ],
+    "keyword_score": 1.0,
+    "passed": true
+  },
+  {
+    "id": "q13",
+    "company": "jpmc",
+    "difficulty": "medium",
+    "question": "What was JPMorgan Chase's diluted earnings per share for 2025?",
+    "generated_answer": "Based on the provided context, JPMorgan Chase reported **earnings per share of $20.02** for 2025 (the context does not explicitly specify whether this figure is basic or diluted).",
+    "expected_answer": "$20.02",
+    "retrieved_companies": [
+      "jpmc"
+    ],
+    "keyword_score": 1.0,
+    "passed": true
+  },
+  {
+    "id": "q14",
+    "company": "jpmc",
+    "difficulty": "medium",
+    "question": "What was JPMorgan Chase's return on equity (ROE) for 2025?",
+    "generated_answer": "Based on the provided context, JPMorgan Chase's return on equity (ROE) for 2025 was **17%**.",
+    "expected_answer": "17%",
+    "retrieved_companies": [
+      "jpmc"
+    ],
+    "keyword_score": 1.0,
+    "passed": true
+  },
+  {
+    "id": "q15",
+    "company": "nvidia",
+    "difficulty": "medium",
+    "question": "What were NVIDIA's investment commitments as of January 25, 2026?",
+    "generated_answer": "As of January 25, 2026, NVIDIA's investment commitments were $11.4 billion, subject to certain contingencies.",
+    "expected_answer": "$11.4 billion, subject to certain contingencies",
+    "retrieved_companies": [
+      "nvidia"
+    ],
+    "keyword_score": 1.0,
+    "passed": true
+  },
+  {
+    "id": "q16",
+    "company": "all",
+    "difficulty": "hard",
+    "question": "Which of the three companies had the highest net income in their most recent reporting period?",
+    "generated_answer": "Based on the provided context, the company with the reportable segments **Productivity and Business Processes, Intelligent Cloud, and More Personal Computing** (fiscal year ended June 30, 2026) had the highest net income in its most recent reporting period.\n\n* **Company 1 (Productivity and Business Processes / Intelligent Cloud):** **$133,749 million** (FY 2026)\n* **Company 2 (Compute & Networking / Graphics):** **$120,067 million** (FY ended Jan 25, 2026)\n* **Company 3 (Banking / Financial Services):** **$52,528 million** total segment net income ($18,245M + $27,761M + $6,522M for FY 2025)",
+    "expected_answer": "Microsoft, with $133,749 million, compared to NVIDIA's $120,067 million and JPMorgan's $57,048 million",
+    "retrieved_companies": [
+      "nvidia",
+      "jpmc",
+      "microsoft"
+    ],
+    "keyword_score": 0.5,
+    "passed": true
+  },
+  {
+    "id": "q17",
+    "company": "microsoft",
+    "difficulty": "hard",
+    "question": "What was the main driver of Microsoft's revenue growth in fiscal year 2026?",
+    "generated_answer": "Based on the provided context, the main driver of Microsoft's revenue growth in fiscal year 2026 was growth in Microsoft Cloud.",
+    "expected_answer": "Growth in Microsoft Cloud, particularly driven by Azure",
+    "retrieved_companies": [
+      "microsoft"
+    ],
+    "keyword_score": 0.5,
+    "passed": true
+  },
+  {
+    "id": "q18",
+    "company": "nvidia",
+    "difficulty": "hard",
+    "question": "What percentage of NVIDIA's revenue in fiscal year 2026 came from outside the United States?",
+    "generated_answer": "Based on the provided context, **31%** of NVIDIA's total revenue in fiscal year 2026 came from sales to customers headquartered outside of the United States.",
+    "expected_answer": "31% (down from 41% in fiscal year 2025)",
+    "retrieved_companies": [
+      "nvidia"
+    ],
+    "keyword_score": 1.0,
+    "passed": true
+  }
+]
