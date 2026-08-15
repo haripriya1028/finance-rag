@@ -4,23 +4,24 @@ A retrieval-augmented generation (RAG) system for answering questions over SEC f
 
 ## Project structure
 
+```
 finance-rag/
 ├── data/
-│ └── filings/ # raw + extracted SEC filing text (HTML not tracked in git)
+│   └── filings/            # raw + extracted SEC filing text (HTML not tracked in git)
 ├── evaluation/
-│ ├── test_questions.json
-│ ├── evaluate.py # runs full eval suite
-│ ├── debug_retrieval.py # inspect retrieval for a single question
-│ ├── debug_bm25.py # compare BM25 vs embedding ranking
-│ ├── find_chunk.py # search raw chunks for a specific string
-│ └── results.json # latest eval output
+│   ├── test_questions.json
+│   ├── evaluate.py          # runs full eval suite
+│   ├── debug_retrieval.py   # inspect retrieval for a single question
+│   ├── debug_bm25.py        # compare BM25 vs embedding ranking
+│   ├── find_chunk.py        # search raw chunks for a specific string
+│   └── results.json         # latest eval output
 ├── src/
-│ ├── ingest.py # HTML -> clean text extraction
-│ ├── chunk_and_embed.py # text -> chunks (data/chunks.json)
-│ ├── embed_and_store.py # chunks -> embeddings -> Chroma vector store
-│ └── query.py # retrieval (hybrid BM25 + embeddings) + generation
-└── chroma_db/ # persistent vector store (not tracked in git)
-
+│   ├── ingest.py             # HTML -> clean text extraction
+│   ├── chunk_and_embed.py    # text -> chunks (data/chunks.json)
+│   ├── embed_and_store.py    # chunks -> embeddings -> Chroma vector store
+│   └── query.py              # retrieval (hybrid BM25 + embeddings) + generation
+└── chroma_db/                # persistent vector store (not tracked in git)
+```
 
 ## How it works
 
@@ -52,7 +53,7 @@ Debug tools:
 
 ## Known limitations
 
-- One question (Microsoft net income comparison) fails retrieval - the answer lives in a densely formatted summary table whose column headers ("2026", "2025") don't lexically match natural question phrasing ("fiscal year 2026"). Diagnosed via chunk-level debugging; the fix would be enriching table chunks with synthetic natural-language context at indexing time.
+- One question (Microsoft net income comparison) fails retrieval — the answer lives in a densely formatted summary table whose column headers ("2026", "2025") don't lexically match natural question phrasing ("fiscal year 2026"). Diagnosed via chunk-level debugging; the fix would be enriching table chunks with synthetic natural-language context at indexing time.
 - Free-tier Gemini API has strict per-minute and per-day rate limits; `evaluate.py` includes retry logic and response caching (`evaluation/answer_cache.json`) to handle this.
 
 ## Setup
@@ -63,8 +64,9 @@ pip install -r requirements.txt
 
 Create a `.env` file in the project root with:
 
+```
 GEMINI_API_KEY=your_key_here
-
+```
 
 Then run the pipeline in order:
 ```bash
