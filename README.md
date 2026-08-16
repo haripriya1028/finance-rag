@@ -25,16 +25,16 @@ finance-rag/
 
 ## How it works
 
-1. **Ingest** (`src/ingest.py`) — parses raw SEC filing HTML in `data/filings/`, extracts tables and text into `*_extracted.txt` files.
-2. **Chunk** (`src/chunk_and_embed.py`) — splits filings into ~500-character overlapping chunks (LangChain's recursive text splitter), saves to `data/chunks.json`.
-3. **Embed & store** (`src/embed_and_store.py`) — embeds chunks with `all-MiniLM-L6-v2` (sentence-transformers) and stores them in a persistent Chroma vector database.
-4. **Query** (`src/query.py`) — retrieves relevant chunks and generates answers using Gemini.
+1. **Ingest** (`src/ingest.py`) - parses raw SEC filing HTML in `data/filings/`, extracts tables and text into `*_extracted.txt` files.
+2. **Chunk** (`src/chunk_and_embed.py`) - splits filings into ~500-character overlapping chunks (LangChain's recursive text splitter), saves to `data/chunks.json`.
+3. **Embed & store** (`src/embed_and_store.py`) - embeds chunks with `all-MiniLM-L6-v2` (sentence-transformers) and stores them in a persistent Chroma vector database.
+4. **Query** (`src/query.py`) - retrieves relevant chunks and generates answers using Gemini.
 
 ## Retrieval: hybrid search
 
 Initial retrieval used embeddings only, which struggled with two failure modes on financial filings:
-- **Near-duplicate boilerplate across years** — e.g. "For fiscal year 2024, sales to one customer represented 13%..." vs. the FY2026 version with 22% — nearly identical phrasing confused pure embedding similarity.
-- **Table vs. prose mismatch** — dense financial tables (e.g. `Net income | 133,749 | 101,832 | 31%`) embed poorly against natural-language questions.
+- **Near-duplicate boilerplate across years** - e.g. "For fiscal year 2024, sales to one customer represented 13%..." vs. the FY2026 version with 22% - nearly identical phrasing confused pure embedding similarity.
+- **Table vs. prose mismatch** - dense financial tables (e.g. `Net income | 133,749 | 101,832 | 31%`) embed poorly against natural-language questions.
 
 Fixed by combining BM25 keyword search with embedding search via **Reciprocal Rank Fusion**, which resolved the near-duplicate-year case. The table-vocabulary-mismatch case remains a known limitation (documented below).
 
@@ -47,13 +47,13 @@ Fixed by combining BM25 keyword search with embedding search via **Reciprocal Ra
 Run: `python evaluation/evaluate.py`
 
 Debug tools:
-- `python evaluation/debug_retrieval.py` — trace which chunks get retrieved for a specific question
-- `python evaluation/debug_bm25.py` — compare BM25-only vs embedding-only ranking for a chunk
-- `python evaluation/find_chunk.py` — grep raw chunks for a specific string/figure
+- `python evaluation/debug_retrieval.py` - trace which chunks get retrieved for a specific question
+- `python evaluation/debug_bm25.py` - compare BM25-only vs embedding-only ranking for a chunk
+- `python evaluation/find_chunk.py` - grep raw chunks for a specific string/figure
 
 ## Known limitations
 
-- One question (Microsoft net income comparison) fails retrieval — the answer lives in a densely formatted summary table whose column headers ("2026", "2025") don't lexically match natural question phrasing ("fiscal year 2026"). Diagnosed via chunk-level debugging; the fix would be enriching table chunks with synthetic natural-language context at indexing time.
+- One question (Microsoft net income comparison) fails retrieval - the answer lives in a densely formatted summary table whose column headers ("2026", "2025") don't lexically match natural question phrasing ("fiscal year 2026"). Diagnosed via chunk-level debugging; the fix would be enriching table chunks with synthetic natural-language context at indexing time.
 - Free-tier Gemini API has strict per-minute and per-day rate limits; `evaluate.py` includes retry logic and response caching (`evaluation/answer_cache.json`) to handle this.
 
 ## Setup

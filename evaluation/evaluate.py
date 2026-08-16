@@ -28,7 +28,7 @@ for test in test_questions:
         retrieved = retrieve_chunks(question, top_k=15, company_filter=test["company"])
 
     # --- use cached answer if we already have one for this question id ---
-    if test["id"] in answer_cache:
+    if test["id"] in answer_cache and not answer_cache[test["id"]].startswith("ERROR"):
         answer = answer_cache[test["id"]]
         print(f"[cached] {test['id']}")
     else:
@@ -44,12 +44,12 @@ for test in test_questions:
         if answer is None:
             answer = "ERROR: failed after retries"
 
-        # save to cache immediately after every successful call
-        answer_cache[test["id"]] = answer
-        with open(cache_path, "w", encoding="utf-8") as f:
-            json.dump(answer_cache, f, indent=2)
+        if not answer.startswith("ERROR"):
+            answer_cache[test["id"]] = answer
+            with open(cache_path, "w", encoding="utf-8") as f:
+                json.dump(answer_cache, f, indent=2)
 
-        time.sleep(6)  # stay under free-tier rate limit
+        time.sleep(6)
 
     retrieved_companies = list(set(m["company"] for m in retrieved["metadatas"][0]))
 
