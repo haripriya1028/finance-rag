@@ -42,7 +42,7 @@ Fixed by combining BM25 keyword search with embedding search via **Reciprocal Ra
 
 18 test questions across easy/medium/hard difficulty, auto-scored by keyword matching against expected answers.
 
-**Latest results:** [update once your final run completes]
+**Latest results:** 15/18 auto-scored (83.3%); 16/18 on manual review (one keyword-matching artifact - model answer was actually correct). Remaining failures are a table-retrieval limitation, documented below.
 
 Run: `python evaluation/evaluate.py`
 
@@ -51,9 +51,15 @@ Debug tools:
 - `python evaluation/debug_bm25.py` - compare BM25-only vs embedding-only ranking for a chunk
 - `python evaluation/find_chunk.py` - grep raw chunks for a specific string/figure
 
+
 ## Known limitations
 
-- One question (Microsoft net income comparison) fails retrieval - the answer lives in a densely formatted summary table whose column headers ("2026", "2025") don't lexically match natural question phrasing ("fiscal year 2026"). Diagnosed via chunk-level debugging; the fix would be enriching table chunks with synthetic natural-language context at indexing time.
+- **Table vs. prose retrieval mismatch.** Dense financial summary tables (e.g. `Net income | 133,749 | 101,832 | 31%`) don't rank well against natural-language questions, since they lack the phrasing patterns embeddings and BM25 both key off of. This causes retrieval misses on two test questions:
+  - "What was Microsoft's net income for fiscal year 2026, and how does it compare to fiscal year 2025?" - the answer sits in a single summary table (`microsoft_554`), confirmed present in the data but not retrieved in the top 15-30 results by either BM25 or embeddings.
+  - "Which of the three companies had the highest total revenue in their most recent fiscal year?" - a harder case, since it needs the right summary-table chunk from all three companies to rank well *simultaneously* across three independent per-company searches.
+  
+  Diagnosed via chunk-level debugging (`evaluation/debug_bm25.py`, `evaluation/debug_retrieval.py`) - confirmed the correct chunks exist in the data but rank too low to be retrieved. The fix would be enriching table chunks with synthetic natural-language context at indexing time (e.g. prepending a generated summary sentence before embedding), rather than a retrieval-algorithm change alone.
+
 - Free-tier Gemini API has strict per-minute and per-day rate limits; `evaluate.py` includes retry logic and response caching (`evaluation/answer_cache.json`) to handle this.
 
 ## Setup
